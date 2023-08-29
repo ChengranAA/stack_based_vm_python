@@ -144,7 +144,7 @@ class VM:
         if operator == "ADD": self.ADD()
         if operator == "POP": self.POP()
         if operator == "JMP": self.JMP(operand)
-        if operator == "ACC": self.SUM()
+        if operator == "SUM": self.SUM()
         if operator == "CMP": self.CMP(operand)
         return instruction # this is for the print_stack() method
     
