@@ -106,11 +106,12 @@ class VM:
         return 0
     
     def print_stack(self, instruction):
+        print("==============REGISTERS==============")
         print(BLUE+ "SP: "+RESET, self.sp, end=" | ")
         print(RED+ "IP: "+RESET, self.ip, end=" | ")
         print(YELLOW+"ACC: "+RESET, self.acc, end=" | ")
         print(MAGENTA+"CMP: "+RESET, self.cmp)
-        print("===============STACK===============")
+        print("================STACK================")
         for add, value in enumerate(self.stack):
             print("#{}:".format(add), end="\t")
             print("0x{:04X}".format((int(value))), end= "\t\t")
@@ -119,11 +120,12 @@ class VM:
                 print(GREEN + "<- sp" + RESET)
             else:
                 print()
-        print(GREEN+"Current instruction: "+RESET, instruction)
+        print("--------------------------------------")
+        print(GREEN+"Current instruction:   "+RESET, instruction)
         if self.halt is True:
-            print(GREEN+"Next instruction: "+RESET)
+            print(GREEN+"Next instruction:      "+RESET)
         else:
-            print(GREEN+"Next instruction: "+RESET,  self.instructions[self.ip])
+            print(GREEN+"Next instruction:      "+RESET,  self.instructions[self.ip])
         print()
         print()
         
