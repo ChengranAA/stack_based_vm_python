@@ -18,7 +18,7 @@ The available instructions include:
 ```python
 from stack-based-vm import vm
 # new
-vm = vm()
+vm = VM()
 
 # add instructions
 vm.instructions.append("START")
