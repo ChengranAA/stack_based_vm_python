@@ -126,25 +126,29 @@ class VM:
             print(GREEN+"Next instruction: "+RESET,  self.instructions[self.ip])
         print()
         print()
+        
+    def assembler(self):
+        instruction = self.instructions[self.ip]
+        try:
+            operator, operand = instruction.split(' ')
+        except ValueError:
+            try:
+                operator = instruction
+            except:
+                print("Wrong Instruction")
+        if operator == "START": self.START()
+        if operator == "HLT": self.HLT()
+        if operator == "PUSH": self.PUSH(operand)
+        if operator == "ADD": self.ADD()
+        if operator == "POP": self.POP()
+        if operator == "JMP": self.JMP(operand)
+        if operator == "ACC": self.ACC()
+        if operator == "CMP": self.CMP(operand)
+        return instruction # this is for the print_stack() method
     
     def run(self):
         while not self.halt:
-            instruction = self.instructions[self.ip]
-            try:
-                operator, operand = instruction.split(' ')
-            except ValueError:
-                try:
-                    operator = instruction
-                except:
-                    print("Wrong Instruction")
-            if operator == "START": self.START()
-            if operator == "HLT": self.HLT()
-            if operator == "PUSH": self.PUSH(operand)
-            if operator == "ADD": self.ADD()
-            if operator == "POP": self.POP()
-            if operator == "JMP": self.JMP(operand)
-            if operator == "ACC": self.ACC()
-            if operator == "CMP": self.CMP(operand)
+            instruction = self.assembler()
             self.print_stack(instruction)
             input()
                 
