@@ -16,7 +16,7 @@ The available instructions include:
 ## How to run
 
 ```python
-from stack-based-vm import vm
+from stack-based-vm import VM
 # new
 vm = VM()
 
