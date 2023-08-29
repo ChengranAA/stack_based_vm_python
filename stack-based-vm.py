@@ -10,7 +10,7 @@ The `VM` class contains methods for each instruction supported by the VM. Notabl
 - `ADD()`: Pops values from the stack, adds them, and pushes the result back onto the stack.
 - `HLT()`: Halts the VM, resetting its registers and stack.
 - `JMP(value)`: Jumps to a specified instruction index.
-- `ACC()`: Updates the compare register based on the accumulator.
+- `SUM()`: Updates the compare register based on the accumulator.
 - `CMP(value)`: Compares the value in the compare register with the specified value.
 
 The script then creates an instance of the `VM` class and adds a series of assembly-like instructions to its instruction list.
@@ -94,7 +94,7 @@ class VM:
         self.ip = int(value) -1
         return 
     
-    def ACC(self):
+    def SUM(self):
         self.cmp += self.acc
         self.step()
     
@@ -144,7 +144,7 @@ class VM:
         if operator == "ADD": self.ADD()
         if operator == "POP": self.POP()
         if operator == "JMP": self.JMP(operand)
-        if operator == "ACC": self.ACC()
+        if operator == "ACC": self.SUM()
         if operator == "CMP": self.CMP(operand)
         return instruction # this is for the print_stack() method
     
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     stack.instructions.append("PUSH 1")
     stack.instructions.append("PUSH 2")
     stack.instructions.append("ADD")
-    stack.instructions.append("ACC")
+    stack.instructions.append("SUM")
     stack.instructions.append("POP")
     stack.instructions.append("CMP 20")
     stack.instructions.append("JMP 2")

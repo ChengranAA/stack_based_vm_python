@@ -10,7 +10,7 @@ The available instructions include:
 -  `ADD`: Pops values from the stack, adds them, and pushes the result back onto the stack. 
 -  `HLT`: Halts the VM, resetting its registers and stack. 
 -  `JMP value`: Jumps to a specified instruction index. 
--  `ACC`: Updates the compare register based on the accumulator. 
+-  `SUM`: Updates the compare register based on the accumulator. 
 -  `CMP value`: Compares the value in the compare register with the specified value.
 
 ## How to run
@@ -28,4 +28,6 @@ vm.instructions.append("HLT")
 # run 
 vm.run() # hit <Enter> to proceed
 ```
+
+
 
