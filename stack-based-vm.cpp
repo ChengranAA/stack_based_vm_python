@@ -10,7 +10,7 @@ const std::string RED = "\033[91m";
 
 class VM {
 public:
-    VM() : sp(0), ip(0), acc(0), cmp(0), halt(false) {
+    VM() : MEM(5),sp(0), ip(0), acc(0), cmp(0), halt(false) {
         stack = std::vector<int>(5, 0);
         instructions = std::vector<std::string>();
     }
@@ -31,6 +31,10 @@ public:
     }
 
     int PUSH(int value) {
+        if (sp > MEM-1) {
+            std::cout << "Stack Overflow" << std::endl;
+            std::exit(64);
+        }
         stack[sp] = value;
         sp += 1;
         step();
@@ -149,6 +153,7 @@ public:
     }
 
 private:
+    int MEM;
     int sp; // stack pointer register
     int ip; // program counter register
     int acc; // accumulator register
@@ -160,7 +165,7 @@ private:
 
 int main() {
     VM stack;
-
+    /*
     stack.append("START");
     stack.append("PUSH 1");
     stack.append("PUSH 2");
@@ -170,6 +175,17 @@ int main() {
     stack.append("CMP 20");
     stack.append("JMP 2");
     stack.append("HLT");
+    */
+
+    stack.append("START");
+    stack.append("PUSH 1");
+    stack.append("PUSH 2");
+    stack.append("PUSH 3");
+    stack.append("PUSH 4");
+    stack.append("PUSH 5");
+    stack.append("PUSH 6");
+
+
 
     stack.run();
 

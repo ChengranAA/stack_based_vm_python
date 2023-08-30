@@ -40,6 +40,7 @@ class VM:
         self.ip = 0 # program counter register
         self.acc = 0 # accumulator register
         self.cmp = 0 # compare register
+        self.MEM = 5
         self.halt = False
         self.stack = [0,0,0,0,0]
         self.instructions = []
@@ -56,6 +57,9 @@ class VM:
         
     
     def PUSH(self, value):
+        if self.sp > self.MEM:
+            print("Stack Overflow")
+            sys.exit(64)
         self.stack[self.sp] = value
         self.sp += 1
         self.step()
