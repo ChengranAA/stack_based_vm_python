@@ -1,4 +1,4 @@
-# Simple Virtual Machine Simulator in Python
+# Simple Virtual Machine Simulator in Python and C++
 
 This simple virtual machine simulator is a Python script that demonstrates the basic functioning of a virtual machine by interpreting an assembly-like language and executing a sequence of instructions. This project provides a hands-on exploration of how virtual machines work, how they manage memory, registers, and control flow, and how instructions are processed.
 
